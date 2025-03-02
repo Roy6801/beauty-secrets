@@ -64,6 +64,7 @@
 		"@types/node": "^20",
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
+		"babel-plugin-react-compiler": "^19.0.0-beta-e1e972c-20250221",
 		"groq-cli": "^0.4.1",
 		"tailwindcss": "^4",
 		"typescript": "^5"
