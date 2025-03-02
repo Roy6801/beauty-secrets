@@ -1,3 +1,4 @@
+import { withVercelToolbar } from "@vercel/toolbar/plugins/next";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -15,4 +16,4 @@ const nextConfig: NextConfig = {
 	transpilePackages: ["lucide-react"],
 };
 
-export default nextConfig;
+export default withVercelToolbar()(nextConfig);

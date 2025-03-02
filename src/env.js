@@ -6,7 +6,11 @@ export const env = createEnv({
 	 * Specify your server-side environment variables schema here. This way you can ensure the app
 	 * isn't built with invalid env vars.
 	 */
-	server: {},
+	server: {
+		NODE_ENV: z.enum(["development", "test", "production"]),
+		SANITY_API_READ_TOKEN: z.string(),
+		API_PROTECTION_TOKEN: z.string(),
+	},
 
 	/**
 	 * Specify your client-side environment variables schema here. This way you can ensure the app
@@ -17,7 +21,6 @@ export const env = createEnv({
 		NEXT_PUBLIC_SANITY_PROJECT_ID: z.string(),
 		NEXT_PUBLIC_SANITY_DATASET: z.string(),
 		NEXT_PUBLIC_SANITY_API_VERSION: z.string(),
-		NEXT_PUBLIC_SANITY_VIEWER_TOKEN: z.string(),
 	},
 
 	/**
@@ -25,11 +28,12 @@ export const env = createEnv({
 	 * middlewares) or client-side so we need to destruct manually.
 	 */
 	runtimeEnv: {
+		NODE_ENV: process.env.NODE_ENV,
 		NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
 		NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
 		NEXT_PUBLIC_SANITY_API_VERSION: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
-		NEXT_PUBLIC_SANITY_VIEWER_TOKEN:
-			process.env.NEXT_PUBLIC_SANITY_VIEWER_TOKEN,
+		SANITY_API_READ_TOKEN: process.env.SANITY_API_READ_TOKEN,
+		API_PROTECTION_TOKEN: process.env.API_PROTECTION_TOKEN,
 	},
 	/**
 	 * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
