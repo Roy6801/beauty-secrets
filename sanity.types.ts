@@ -85,8 +85,176 @@ export type PageSection = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  category?: "hero";
+  category?: "about" | "contact" | "gallery" | "hero" | "services" | "testimonials";
   section?: string;
+  ContactWithForm?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    formTitle?: string;
+    formSubmitText?: string;
+    formEndpoint?: string;
+    contactInfo?: Array<{
+      type?: "address" | "phone" | "email" | "hours";
+      icon?: string;
+      content?: string;
+      hoursDetails?: Array<string>;
+      _key: string;
+    }>;
+    socialLinks?: Array<{
+      platform?: string;
+      icon?: string;
+      url?: string;
+      _key: string;
+    }>;
+    serviceOptions?: Array<{
+      label?: string;
+      value?: string;
+      _key: string;
+    }>;
+    sectionId?: string;
+  };
+  TestimonialCards?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    testimonials?: Array<{
+      name?: string;
+      service?: string;
+      comment?: string;
+      rating?: number;
+      avatar?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      };
+      _key: string;
+    }>;
+    sectionId?: string;
+  };
+  ImageGallery?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    columns?: 2 | 3 | 4;
+    images?: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      title?: string;
+      _type: "image";
+      _key: string;
+    }>;
+    viewMoreLink?: string;
+    viewMoreText?: string;
+    sectionId?: string;
+  };
+  ImageWithContent?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    image?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    imagePosition?: "left" | "right";
+    actions?: Array<{
+      _key: string;
+    } & ActionButton>;
+    sectionId?: string;
+  };
   LeftCenterWithBackgroundImage?: {
     title?: string;
     highlightText?: string;
@@ -124,6 +292,38 @@ export type PageSection = {
     actions?: Array<{
       _key: string;
     } & ActionButton>;
+  };
+  ServiceGrid?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    services?: Array<{
+      name?: string;
+      description?: string;
+      price?: number;
+      icon?: string;
+      learnMoreLink?: string;
+      _key: string;
+    }>;
+    sectionId?: string;
   };
 };
 
@@ -342,7 +542,7 @@ export type DYNAMIC_PAGE_QUERYResult = {
   slug: string | null;
   sections: Array<{
     title: string | null;
-    category: "hero" | null;
+    category: "about" | "contact" | "gallery" | "hero" | "services" | "testimonials" | null;
     section: string | null;
   }> | null;
 } | null;
