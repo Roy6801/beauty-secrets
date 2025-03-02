@@ -68,6 +68,16 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type ActionButton = {
+  _type: "actionButton";
+  name?: string;
+  href?: string;
+  primary?: boolean;
+  external?: boolean;
+  iconRight?: string;
+  iconLeft?: string;
+};
+
 export type PageSection = {
   _id: string;
   _type: "pageSection";
@@ -75,8 +85,46 @@ export type PageSection = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  category?: never;
+  category?: "hero";
   section?: string;
+  LeftCenterWithBackgroundImage?: {
+    title?: string;
+    highlightText?: string;
+    titleSuffix?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    heroImage?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    actions?: Array<{
+      _key: string;
+    } & ActionButton>;
+  };
 };
 
 export type Metadata = {
@@ -277,7 +325,9 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | PageSection | Metadata | DynamicPage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
+export type Markdown = string;
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | ActionButton | PageSection | Metadata | DynamicPage | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Markdown;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/features/dynamic-page/queries.ts
 // Variable: ALL_DYNAMIC_PAGES_QUERY
@@ -292,7 +342,7 @@ export type DYNAMIC_PAGE_QUERYResult = {
   slug: string | null;
   sections: Array<{
     title: string | null;
-    category: null;
+    category: "hero" | null;
     section: string | null;
   }> | null;
 } | null;

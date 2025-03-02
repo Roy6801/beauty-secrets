@@ -1,4 +1,4 @@
-import { websiteUrl } from "@/constants";
+import { WEBSITE_URL } from "@/constants";
 import type { OGImage } from "../types";
 import type { TemplateData } from "../types";
 
@@ -38,13 +38,13 @@ export const getOGImage = (
 		}
 	}
 
-	const ogImageUrl = `${websiteUrl}${ogEndpoint}?${searchParams.toString()}`;
+	const ogImageUrl = `${WEBSITE_URL}${ogEndpoint}?${searchParams.toString()}`;
 	return [{ url: ogImageUrl, width: 1200, height: 630, alt: title }];
 };
 
 export const getOGUrl = (slug: string) => {
 	if (slug.startsWith("/")) {
-		return `${websiteUrl}${slug}`;
+		return `${WEBSITE_URL}${slug}`;
 	}
-	return `${websiteUrl}/${slug}`;
+	return `${WEBSITE_URL}/${slug}`;
 };
