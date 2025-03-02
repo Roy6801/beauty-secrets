@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 
+import { cn } from "@/lib/utils";
+/* -----------------Analytics--------------- */
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
@@ -23,11 +28,14 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+		<html
+			lang="en"
+			className={cn("antialiased", geistSans.variable, geistMono.variable)}
+		>
+			<body>
 				{children}
+				<Analytics />
+				<SpeedInsights />
 			</body>
 		</html>
 	);

@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
+	experimental: {
+		reactCompiler: true,
+	},
+	transpilePackages: ["lucide-react"],
 };
 
 export default nextConfig;
