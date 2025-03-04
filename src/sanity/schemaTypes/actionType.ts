@@ -1,8 +1,8 @@
 import { defineType } from "sanity";
 
-export const actionButtonType = defineType({
-	name: "actionButton",
-	title: "Action Button",
+export const actionType = defineType({
+	name: "action",
+	title: "Action",
 	type: "object",
 	fields: [
 		{
@@ -18,10 +18,20 @@ export const actionButtonType = defineType({
 			validation: (Rule) => Rule.required(),
 		},
 		{
-			name: "primary",
-			title: "Is Primary Button",
-			type: "boolean",
-			initialValue: false,
+			name: "variant",
+			title: "Button Style",
+			type: "string",
+			options: {
+				list: [
+					{ title: "Default", value: "default" },
+					{ title: "Destructive", value: "destructive" },
+					{ title: "Outline", value: "outline" },
+					{ title: "Secondary", value: "secondary" },
+					{ title: "Ghost", value: "ghost" },
+					{ title: "Link", value: "link" },
+				],
+			},
+			initialValue: "default",
 		},
 		{
 			name: "external",

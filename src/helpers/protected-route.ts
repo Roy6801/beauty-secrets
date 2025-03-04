@@ -1,11 +1,10 @@
-import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
 // Generic type for Request
-type RequestType = Request | NextRequest;
-type ResponseType = Response | NextResponse;
+type RequestType = NextRequest;
+type ResponseType = NextResponse;
 
 // Generic RouteHandler type
 type RouteHandler<TReq extends RequestType, TRes extends ResponseType> = (
@@ -48,9 +47,8 @@ export const withProtection = <
 				) as TRes;
 			}
 
-			// Get authorization header
-			const headersList = await headers();
-			const authorization = headersList.get("authorization");
+			// Get authorization header from request
+			const authorization = req.headers.get("authorization");
 
 			if (!authorization) {
 				return NextResponse.json(

@@ -10,14 +10,14 @@ export type ImageDetails = {
 	height?: number;
 };
 
-export type SectionHeader<T extends React.ElementType = "h1"> = {
+export type SectionHeader = {
 	heading?: string;
 	description?: AdaptiveTextContent;
 	actions?: ActionButtonProps[];
 	className?: string;
-} & TitleProps<T>;
+} & TitleProps;
 
-export type SectionWithImage<T extends React.ElementType = "h1"> = {
+export type SectionWithImage = {
 	heroImage: ImageDetails;
 	sectionId?: string;
-} & SectionHeader<T>;
+} & SectionHeader;

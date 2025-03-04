@@ -6,12 +6,10 @@ import { type EvaluateOptions, evaluate } from "@mdx-js/mdx";
 // biome-ignore  lint/style/noNamespaceImport: This is a valid import
 import * as runtime from "react/jsx-runtime";
 
-/* -----------------Types--------------- */
-import type { TextProps } from "./types";
-
-export type MDXProps<T extends React.ElementType = "div"> = {
+export type MDXProps = {
 	textContent: string;
-} & Omit<TextProps<T>, "children">;
+	className?: string;
+};
 
 const MDX = async ({ textContent, className }: MDXProps) => {
 	if (!textContent) {
@@ -24,7 +22,7 @@ const MDX = async ({ textContent, className }: MDXProps) => {
 	);
 
 	return (
-		<div className={cn("prose prose-lg portable-text-link", className)}>
+		<div className={cn("prose lg:prose-lg text-foreground", className)}>
 			<MDXContent />
 		</div>
 	);

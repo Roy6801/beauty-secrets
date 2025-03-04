@@ -73,7 +73,6 @@ export const pageMetadataType = defineField({
 							name: "title",
 							type: "string",
 							title: "Title",
-							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
 							name: "highlightText",
@@ -98,7 +97,6 @@ export const pageMetadataType = defineField({
 							name: "image",
 							type: "image",
 							title: "Featured Image",
-							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
 							name: "icon",
@@ -109,13 +107,11 @@ export const pageMetadataType = defineField({
 							name: "title",
 							type: "string",
 							title: "Title",
-							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
 							name: "tagline",
 							type: "string",
 							title: "Tagline",
-							validation: (Rule) => Rule.required(),
 						}),
 						defineField({
 							name: "frame",

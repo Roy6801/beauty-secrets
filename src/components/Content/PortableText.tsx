@@ -1,9 +1,4 @@
 import { PortableText as PText, type PortableTextProps } from "next-sanity";
-/* -----------------Constants--------------- */
-import { defaultAlignment, textPosition } from "./constants";
-
-/* -----------------Types--------------- */
-import type { TextProps } from "./types";
 
 /* -----------------Helpers--------------- */
 import { cn } from "@/lib/utils";
@@ -11,27 +6,18 @@ import type { TypedObject } from "sanity";
 
 export type PortableContent = TypedObject | TypedObject[];
 
-type TextPropsWithoutChildren<T extends React.ElementType> = Omit<
-	TextProps<T>,
-	"children"
->;
+type PortableContentProps = {
+	as?: React.ElementType;
+	value?: PortableContent | null;
+	className?: string;
+} & Omit<PortableTextProps, "value">;
 
-type PortableContentProps<T extends React.ElementType = "p"> = Omit<
-	React.ComponentPropsWithoutRef<T>,
-	keyof TextPropsWithoutChildren<T>
-> &
-	TextPropsWithoutChildren<T> &
-	Omit<PortableTextProps, "value"> & {
-		value?: PortableContent | null;
-	};
-
-function PortableText<T extends React.ElementType = "p">({
+const PortableText = ({
 	as,
 	className,
-	textAlign = defaultAlignment,
 	value,
 	...props
-}: PortableContentProps<T>) {
+}: PortableContentProps) => {
 	if (value == null) {
 		return null;
 	}
@@ -39,16 +25,10 @@ function PortableText<T extends React.ElementType = "p">({
 	const Component = as ?? "div";
 
 	return (
-		<Component
-			className={cn(
-				"mt-6 text-foreground text-lg leading-8",
-				textPosition[textAlign],
-				className,
-			)}
-		>
+		<Component className={cn("text-foreground leading-8", className)}>
 			<PText value={value} {...props} />
 		</Component>
 	);
-}
+};
 
 export default PortableText;

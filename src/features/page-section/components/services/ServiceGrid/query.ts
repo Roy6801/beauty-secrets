@@ -4,12 +4,19 @@ const responseStructure = `
   highlightText,
   titleSuffix,
   description,
-  services[] {
+  items[] {
     name,
     description,
-    price,
     icon,
-    learnMoreLink
+    caption,
+    action {
+      name,
+      href,
+      variant,
+      external,
+      iconRight,
+      iconLeft
+    }
   }
 `;
 

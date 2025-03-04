@@ -12,7 +12,7 @@ const responseStructure = `
   actions[] {
     name,
     href,
-    primary,
+    variant,
     external,
     iconLeft,
     iconRight

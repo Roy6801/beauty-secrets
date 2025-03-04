@@ -1,18 +1,13 @@
-/* -----------------Constants--------------- */
-import { defaultAlignment, textPosition } from "./constants";
-
-/* -----------------Types--------------- */
-import type { TextProps } from "./types";
-
 /* -----------------Helpers--------------- */
 import { cn } from "@/lib/utils";
 
-function Label<T extends React.ElementType = "label">({
-	as,
-	className,
-	children,
-	textAlign = defaultAlignment,
-}: Omit<React.ComponentPropsWithoutRef<T>, keyof TextProps<T>> & TextProps<T>) {
+type LabelProps = {
+	as?: React.ElementType;
+	children?: React.ReactNode;
+	className?: string;
+};
+
+const Label = ({ as, className, children }: LabelProps) => {
 	if (children == null) {
 		return null;
 	}
@@ -22,14 +17,13 @@ function Label<T extends React.ElementType = "label">({
 	return (
 		<Component
 			className={cn(
-				"mt-1 font-semibold text-base text-secondary leading-7",
-				textPosition[textAlign],
+				"mt-1 font-semibold text-secondary text-xs leading-7 md:text-sm lg:text-base",
 				className,
 			)}
 		>
 			{children}
 		</Component>
 	);
-}
+};
 
 export default Label;

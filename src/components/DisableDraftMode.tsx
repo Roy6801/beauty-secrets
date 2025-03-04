@@ -16,7 +16,6 @@ export function DisableDraftMode() {
 			name="Disable Draft Mode"
 			href="/api/draft-mode/disable"
 			className="fixed right-4 bottom-4"
-			primary
 		/>
 	);
 }

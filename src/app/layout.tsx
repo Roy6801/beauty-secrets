@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 
 /* -----------------Styles--------------- */
 import "@/styles/globals.css";
@@ -14,13 +14,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { draftMode } from "next/headers";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
+const inter = Inter({
 	subsets: ["latin"],
 });
 
@@ -30,11 +24,9 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const isDraftModeEnabled = (await draftMode()).isEnabled;
+
 	return (
-		<html
-			lang="en"
-			className={cn("antialiased", geistSans.variable, geistMono.variable)}
-		>
+		<html lang="en" className={cn("antialiased", inter.className)}>
 			<body>
 				{children}
 				{isDraftModeEnabled && <DisableDraftMode />}

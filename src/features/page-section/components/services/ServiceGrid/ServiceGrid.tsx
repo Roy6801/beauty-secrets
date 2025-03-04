@@ -1,19 +1,31 @@
-import { ActionButton } from "@/components/ActionButton";
-import { Content } from "@/components/Content";
+import {
+	ActionButton,
+	type ActionButtonProps,
+} from "@/components/ActionButton";
+import { Content, type AdaptiveTextContent } from "@/components/Content";
 import { Icon, type IconName } from "@/components/Icon";
 import { SectionContainer } from "@/components/SectionContainer";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import type { SectionHeader } from "@/types";
 
-export type ServiceItem = {
+type Item = {
 	name: string;
-	description: string;
-	price: number;
-	icon: IconName;
-	learnMoreLink?: string;
+	description: AdaptiveTextContent;
+	icon?: IconName;
+	caption?: AdaptiveTextContent;
+	action?: ActionButtonProps;
 };
 
-type ServiceGridProps = {
-	services: ServiceItem[];
+type Props = {
+	items: Item[];
 	sectionId?: string;
 	className?: string;
 } & SectionHeader;
@@ -23,44 +35,71 @@ const ServiceGrid = ({
 	highlightText,
 	titleSuffix,
 	description,
-	services,
+	items,
 	sectionId,
 	className,
-}: ServiceGridProps) => {
+}: Props) => {
 	return (
-		<SectionContainer id={sectionId} className={className}>
-			<div className="mx-auto mb-12 max-w-3xl text-center">
-				<Content>
-					<Content.Title
-						title={title}
-						highlightText={highlightText}
-						titleSuffix={titleSuffix}
-						textAlign="center"
-					/>
-					<Content.AdaptiveText textContent={description} textAlign="center" />
-				</Content>
+		<SectionContainer
+			id={sectionId}
+			className={cn("flex flex-col gap-16", className)}
+			containerClassName="pt-24 pb-32"
+		>
+			<div className="mx-auto max-w-4xl text-center">
+				<Content.Title
+					title={title}
+					highlightText={highlightText}
+					titleSuffix={titleSuffix}
+					as="h2"
+					className="text-4xl md:text-5xl lg:text-6xl"
+				/>
+				<Content.AdaptiveText
+					textContent={description}
+					className="text-base md:text-lg lg:text-xl"
+				/>
 			</div>
 			<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-				{services.map((service, index) => (
-					<div
+				{items.map((item, index) => (
+					<Card
 						key={index.toString()}
-						className="group relative overflow-hidden rounded-lg border bg-background p-6 transition-all hover:shadow-md"
+						className="group transition-all hover:shadow-md"
 					>
-						<div className="mb-4 text-primary">
-							<Icon name={service.icon} className="h-6 w-6" />
-						</div>
-						<h3 className="font-semibold text-xl">{service.name}</h3>
-						<p className="mt-2 text-muted-foreground">{service.description}</p>
-						<p className="mt-4 font-medium">Starting from ${service.price}</p>
-						{service.learnMoreLink && (
-							<ActionButton
-								name="Learn more"
-								href={service.learnMoreLink}
-								buttonVariant="link"
-								className="mt-2 h-auto p-0"
-							/>
+						<CardHeader>
+							{item.icon && (
+								<div className="mb-2 text-primary">
+									<Icon name={item.icon} className="h-6 w-6" />
+								</div>
+							)}
+							<CardTitle>
+								<Content.Title
+									title={item.name}
+									as="h3"
+									className="font-semibold text-base md:text-lg lg:text-xl"
+								/>
+							</CardTitle>
+							<CardDescription>
+								<Content.AdaptiveText
+									textContent={item.description}
+									className="text-xs md:text-sm lg:text-base"
+								/>
+							</CardDescription>
+						</CardHeader>
+
+						<CardContent>
+							{item.caption && (
+								<Content.AdaptiveText
+									textContent={item.caption}
+									className="font-medium text-sm md:text-base lg:text-lg"
+								/>
+							)}
+						</CardContent>
+
+						{item.action && (
+							<CardFooter>
+								<ActionButton {...item.action} />
+							</CardFooter>
 						)}
-					</div>
+					</Card>
 				))}
 			</div>
 		</SectionContainer>

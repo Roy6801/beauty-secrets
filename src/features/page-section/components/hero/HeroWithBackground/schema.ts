@@ -1,15 +1,17 @@
 import { defineField } from "sanity";
 
 export default defineField({
-	name: "LeftCenterWithBackgroundImage",
+	name: "HeroWithBackground",
 	type: "object",
-	title: "Hero: Left Center With Background",
+	title: "Hero: Hero With Background",
 	hidden: ({ parent }) =>
-		!(
-			parent?.category === "hero" &&
-			parent?.section === "LeftCenterWithBackgroundImage"
-		),
+		!(parent?.category === "hero" && parent?.section === "HeroWithBackground"),
 	fields: [
+		defineField({
+			name: "sectionId",
+			type: "string",
+			title: "Section ID",
+		}),
 		defineField({
 			name: "title",
 			type: "string",
@@ -47,7 +49,7 @@ export default defineField({
 			name: "actions",
 			type: "array",
 			title: "Actions",
-			of: [{ type: "actionButton" }],
+			of: [{ type: "action" }],
 		}),
 	],
 });

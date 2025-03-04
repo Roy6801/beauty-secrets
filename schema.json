@@ -470,6 +470,13 @@
 				"value": {
 					"type": "object",
 					"attributes": {
+						"sectionId": {
+							"type": "objectAttribute",
+							"value": {
+								"type": "string"
+							},
+							"optional": true
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -843,13 +850,6 @@
 								}
 							},
 							"optional": true
-						},
-						"sectionId": {
-							"type": "objectAttribute",
-							"value": {
-								"type": "string"
-							},
-							"optional": true
 						}
 					}
 				},
@@ -860,6 +860,13 @@
 				"value": {
 					"type": "object",
 					"attributes": {
+						"sectionId": {
+							"type": "objectAttribute",
+							"value": {
+								"type": "string"
+							},
+							"optional": true
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -1172,13 +1179,6 @@
 								}
 							},
 							"optional": true
-						},
-						"sectionId": {
-							"type": "objectAttribute",
-							"value": {
-								"type": "string"
-							},
-							"optional": true
 						}
 					}
 				},
@@ -1189,6 +1189,13 @@
 				"value": {
 					"type": "object",
 					"attributes": {
+						"sectionId": {
+							"type": "objectAttribute",
+							"value": {
+								"type": "string"
+							},
+							"optional": true
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -1513,13 +1520,6 @@
 								"type": "string"
 							},
 							"optional": true
-						},
-						"sectionId": {
-							"type": "objectAttribute",
-							"value": {
-								"type": "string"
-							},
-							"optional": true
 						}
 					}
 				},
@@ -1530,6 +1530,13 @@
 				"value": {
 					"type": "object",
 					"attributes": {
+						"sectionId": {
+							"type": "objectAttribute",
+							"value": {
+								"type": "string"
+							},
+							"optional": true
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -1837,23 +1844,23 @@
 								}
 							},
 							"optional": true
-						},
+						}
+					}
+				},
+				"optional": true
+			},
+			"HeroWithBackground": {
+				"type": "objectAttribute",
+				"value": {
+					"type": "object",
+					"attributes": {
 						"sectionId": {
 							"type": "objectAttribute",
 							"value": {
 								"type": "string"
 							},
 							"optional": true
-						}
-					}
-				},
-				"optional": true
-			},
-			"LeftCenterWithBackgroundImage": {
-				"type": "objectAttribute",
-				"value": {
-					"type": "object",
-					"attributes": {
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -2154,6 +2161,13 @@
 				"value": {
 					"type": "object",
 					"attributes": {
+						"sectionId": {
+							"type": "objectAttribute",
+							"value": {
+								"type": "string"
+							},
+							"optional": true
+						},
 						"title": {
 							"type": "objectAttribute",
 							"value": {
@@ -2409,13 +2423,6 @@
 										}
 									}
 								}
-							},
-							"optional": true
-						},
-						"sectionId": {
-							"type": "objectAttribute",
-							"value": {
-								"type": "string"
 							},
 							"optional": true
 						}

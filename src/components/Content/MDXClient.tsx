@@ -56,7 +56,7 @@ const MDXClient = ({
 
 	return (
 		<div
-			className={cn("prose lg:prose-lg portable-text-link", className)}
+			className={cn("prose lg:prose-lg text-foreground", className)}
 			dangerouslySetInnerHTML={{ __html: contentHTML }}
 		/>
 	);

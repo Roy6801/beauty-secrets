@@ -88,6 +88,7 @@ export type PageSection = {
   category?: "about" | "contact" | "gallery" | "hero" | "services" | "testimonials";
   section?: string;
   ContactWithForm?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -130,9 +131,9 @@ export type PageSection = {
       value?: string;
       _key: string;
     }>;
-    sectionId?: string;
   };
   TestimonialCards?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -172,9 +173,9 @@ export type PageSection = {
       };
       _key: string;
     }>;
-    sectionId?: string;
   };
   ImageGallery?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -213,9 +214,9 @@ export type PageSection = {
     }>;
     viewMoreLink?: string;
     viewMoreText?: string;
-    sectionId?: string;
   };
   ImageWithContent?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -253,9 +254,9 @@ export type PageSection = {
     actions?: Array<{
       _key: string;
     } & ActionButton>;
-    sectionId?: string;
   };
-  LeftCenterWithBackgroundImage?: {
+  HeroWithBackground?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -294,6 +295,7 @@ export type PageSection = {
     } & ActionButton>;
   };
   ServiceGrid?: {
+    sectionId?: string;
     title?: string;
     highlightText?: string;
     titleSuffix?: string;
@@ -323,7 +325,6 @@ export type PageSection = {
       learnMoreLink?: string;
       _key: string;
     }>;
-    sectionId?: string;
   };
 };
 

@@ -1,83 +1,55 @@
-import { Icon, type IconName } from "@/components/Icon";
-/* -----------------Components--------------- */
-import { Button } from "@/components/ui/button";
-
-/* -----------------Helpers--------------- */
 import { cn } from "@/lib/utils";
-
-/* -----------------Globals--------------- */
 import Link from "next/link";
+import { Icon, type IconName } from "./Icon";
+import { Button } from "./ui/button";
+
+type ButtonVariant =
+	| "default"
+	| "destructive"
+	| "outline"
+	| "secondary"
+	| "ghost"
+	| "link";
 
 export type ActionButtonProps = {
 	name: string;
-	href?: string;
+	href: string;
+	variant?: ButtonVariant;
 	external?: boolean;
-	primary?: boolean;
-	iconLeft?: IconName | null;
-	iconRight?: IconName | null;
-	onClick?: () => void;
-	buttonVariant?: "default" | "link";
-	className?: string;
-	disabled?: boolean;
-};
-
-const ActionButtonHoc = ({
-	children,
-	href,
-	external,
-}: {
-	children: React.ReactNode;
-	href?: string;
-	external?: boolean;
-}) => {
-	if (href) {
-		return (
-			<Link
-				passHref
-				href={href}
-				target={external ? "_blank" : "_self"}
-				rel={external ? "noopener noreferrer" : ""}
-			>
-				{children}
-			</Link>
-		);
-	}
-	return children;
+	iconLeft?: IconName;
+	iconRight?: IconName;
 };
 
 export const ActionButton = ({
 	name,
 	href,
+	variant,
 	external,
-	primary,
 	iconLeft,
 	iconRight,
-	onClick,
-	buttonVariant = "default",
 	className,
-	disabled,
-}: ActionButtonProps) => {
-	if (!primary) {
-		buttonVariant = "link";
-	}
+}: ActionButtonProps & {
+	className?: string;
+}) => {
+	const classes = cn(
+		"flex items-center gap-x-2 text-xs lg:text-sm lg:font-semibold rounded-sm",
+		{
+			"px-6 py-4 lg:px-8 lg:py-6": variant !== "link",
+		},
+		className,
+	);
 
 	return (
-		<ActionButtonHoc href={href} external={external}>
-			<Button
-				size="sm"
-				variant={buttonVariant}
-				onClick={onClick}
-				className={cn("flex items-center gap-2", className, {
-					"font-semibold text-primary-foreground": primary && href,
-					"font-bold text-secondary": !primary && href,
-					"px-0 font-semibold": buttonVariant === "link",
-				})}
-				disabled={disabled}
-			>
-				{!!iconLeft && <Icon name={iconLeft} size={16} />}
+		<Link
+			href={href}
+			target={external ? "_blank" : "_self"}
+			rel={external ? "noopener noreferrer" : ""}
+		>
+			<Button className={classes} variant={variant}>
+				{iconLeft && <Icon name={iconLeft} />}
 				{name}
-				{!!iconRight && <Icon name={iconRight} size={16} />}
+				{iconRight && <Icon name={iconRight} />}
 			</Button>
-		</ActionButtonHoc>
+		</Link>
 	);
 };

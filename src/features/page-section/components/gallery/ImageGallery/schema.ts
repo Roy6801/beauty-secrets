@@ -8,6 +8,11 @@ export default defineField({
 		!(parent?.category === "gallery" && parent?.section === "ImageGallery"),
 	fields: [
 		defineField({
+			name: "sectionId",
+			type: "string",
+			title: "Section ID",
+		}),
+		defineField({
 			name: "title",
 			type: "string",
 			title: "Title",
@@ -73,12 +78,6 @@ export default defineField({
 			type: "string",
 			title: "View More Button Text",
 			initialValue: "View More",
-		}),
-		defineField({
-			name: "sectionId",
-			type: "string",
-			title: "Section ID",
-			initialValue: "gallery",
 		}),
 	],
 });

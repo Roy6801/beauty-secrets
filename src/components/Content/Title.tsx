@@ -1,27 +1,23 @@
-/* -----------------Constants--------------- */
-import { defaultAlignment, textPosition } from "./constants";
-
-/* -----------------Types--------------- */
-import type { TextProps } from "./types";
-
 /* -----------------Helpers--------------- */
 import { cn } from "@/lib/utils";
 
-export type TitleProps<T extends React.ElementType = "h1"> = {
-	highlightText?: string | null;
+export type TitleProps = {
 	title?: string | null;
+	highlightText?: string | null;
 	titleSuffix?: string | null;
-} & TextProps<T>;
+	as?: React.ElementType;
+	children?: React.ReactNode;
+	className?: string;
+};
 
-function Title<T extends React.ElementType = "h1">({
+const Title = ({
 	title,
 	highlightText,
 	titleSuffix,
-	className,
 	as,
 	children,
-	textAlign = defaultAlignment,
-}: TitleProps<T>) {
+	className,
+}: TitleProps) => {
 	if (
 		[title, highlightText, titleSuffix, children].every(
 			(value) => value == null,
@@ -35,8 +31,7 @@ function Title<T extends React.ElementType = "h1">({
 	return (
 		<Component
 			className={cn(
-				"mt-2 font-display font-semibold text-4xl text-foreground tracking-tight lg:text-5xl",
-				textPosition[textAlign],
+				"mt-2 font-semibold text-5xl text-foreground tracking-tight md:text-6xl lg:text-7xl",
 				className,
 			)}
 		>
@@ -65,6 +60,6 @@ function Title<T extends React.ElementType = "h1">({
 			{!(title || highlightText || titleSuffix) && children}
 		</Component>
 	);
-}
+};
 
 export default Title;

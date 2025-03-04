@@ -19,7 +19,7 @@ export default async function BusinessLayerLayout({
 		<>
 			{shouldInjectToolbar && <VercelToolbar />}
 			<SanityLive />
-			<div className="pt-16">{children}</div>
+			{children}
 			{isDraftModeEnabled && <VisualEditing />}
 		</>
 	);

@@ -8,6 +8,11 @@ export default defineField({
 		!(parent?.category === "contact" && parent?.section === "ContactWithForm"),
 	fields: [
 		defineField({
+			name: "sectionId",
+			type: "string",
+			title: "Section ID",
+		}),
+		defineField({
 			name: "title",
 			type: "string",
 			title: "Title",
@@ -137,12 +142,6 @@ export default defineField({
 					],
 				},
 			],
-		}),
-		defineField({
-			name: "sectionId",
-			type: "string",
-			title: "Section ID",
-			initialValue: "contact",
 		}),
 	],
 });

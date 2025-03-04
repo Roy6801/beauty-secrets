@@ -8,6 +8,11 @@ export default defineField({
 		!(parent?.category === "about" && parent?.section === "ImageWithContent"),
 	fields: [
 		defineField({
+			name: "sectionId",
+			type: "string",
+			title: "Section ID",
+		}),
+		defineField({
 			name: "title",
 			type: "string",
 			title: "Title",
@@ -56,13 +61,7 @@ export default defineField({
 			name: "actions",
 			type: "array",
 			title: "Actions",
-			of: [{ type: "actionButton" }],
-		}),
-		defineField({
-			name: "sectionId",
-			type: "string",
-			title: "Section ID",
-			initialValue: "about",
+			of: [{ type: "action" }],
 		}),
 	],
 });

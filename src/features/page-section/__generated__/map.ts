@@ -6,8 +6,8 @@ import { default as ContactWithFormQuery } from "../components/contact/ContactWi
 import { default as ContactWithFormSchema } from "../components/contact/ContactWithForm/schema";
 import { default as ImageGalleryQuery } from "../components/gallery/ImageGallery/query";
 import { default as ImageGallerySchema } from "../components/gallery/ImageGallery/schema";
-import { default as LeftCenterWithBackgroundImageQuery } from "../components/hero/LeftCenterWithBackgroundImage/query";
-import { default as LeftCenterWithBackgroundImageSchema } from "../components/hero/LeftCenterWithBackgroundImage/schema";
+import { default as HeroWithBackgroundQuery } from "../components/hero/HeroWithBackground/query";
+import { default as HeroWithBackgroundSchema } from "../components/hero/HeroWithBackground/schema";
 import { default as ServiceGridQuery } from "../components/services/ServiceGrid/query";
 import { default as ServiceGridSchema } from "../components/services/ServiceGrid/schema";
 import { default as TestimonialCardsQuery } from "../components/testimonials/TestimonialCards/query";
@@ -18,7 +18,7 @@ export const sections = {
 	testimonials: ["TestimonialCards"],
 	gallery: ["ImageGallery"],
 	about: ["ImageWithContent"],
-	hero: ["LeftCenterWithBackgroundImage"],
+	hero: ["HeroWithBackground"],
 	services: ["ServiceGrid"],
 } as const;
 
@@ -44,7 +44,7 @@ export const schemas = {
 	TestimonialCards: TestimonialCardsSchema,
 	ImageGallery: ImageGallerySchema,
 	ImageWithContent: ImageWithContentSchema,
-	LeftCenterWithBackgroundImage: LeftCenterWithBackgroundImageSchema,
+	HeroWithBackground: HeroWithBackgroundSchema,
 	ServiceGrid: ServiceGridSchema,
 } as const;
 
@@ -57,7 +57,7 @@ export const queries = {
 	TestimonialCards: TestimonialCardsQuery,
 	ImageGallery: ImageGalleryQuery,
 	ImageWithContent: ImageWithContentQuery,
-	LeftCenterWithBackgroundImage: LeftCenterWithBackgroundImageQuery,
+	HeroWithBackground: HeroWithBackgroundQuery,
 	ServiceGrid: ServiceGridQuery,
 } as const;
 
@@ -99,10 +99,10 @@ export const sectionMap = {
 		},
 	},
 	hero: {
-		LeftCenterWithBackgroundImage: {
-			name: "LeftCenterWithBackgroundImage",
-			schema: LeftCenterWithBackgroundImageSchema,
-			query: LeftCenterWithBackgroundImageQuery,
+		HeroWithBackground: {
+			name: "HeroWithBackground",
+			schema: HeroWithBackgroundSchema,
+			query: HeroWithBackgroundQuery,
 		},
 	},
 	services: {
